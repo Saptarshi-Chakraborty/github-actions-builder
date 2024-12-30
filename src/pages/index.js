@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 
 const geistSans = Geist({
@@ -17,7 +16,7 @@ export default function Home() {
       className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
     >
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
+        <img
           className="dark:invert"
           src="/SVG_ICON.svg"
           alt="GitHub Actions Builder logo"
@@ -67,7 +66,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Image
+          <img
             aria-hidden
             src="/file.svg"
             alt="File icon"
@@ -82,7 +81,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Image
+          <img
             aria-hidden
             src="/window.svg"
             alt="Window icon"
@@ -97,7 +96,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Image
+          <img
             aria-hidden
             src="/globe.svg"
             alt="Globe icon"
