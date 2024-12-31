@@ -1,14 +1,35 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { ChevronDown, Plus, Trash2 } from 'lucide-react'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue, } from "@/components/ui/select"
 import SelectElement from './SelectElement'
+import { useBuilderContext } from '@/context/BuilderContext'
 
 
 const Trigger = () => {
     const [selected, setSelected] = useState('');
     const [activities, setActivities] = useState({}); // { activity: isSelected }
+
+    const { updateWorkflow } = useBuilderContext();
+
+    useEffect(() => {
+        if (selected) {
+            const selectedActs = Object.keys(activities).filter(activity => activities[activity]);
+            const triggerConfig = selectedActs.length > 0 
+                ? {
+                    [selected]: {
+                        types: selectedActs
+                    }
+                }
+                : selected;
+
+            updateWorkflow({
+                on: triggerConfig
+            });
+        }
+    }, [selected, activities]);
+
 
     const handleActivityClick = (activity) => {
         setActivities(prev => ({
@@ -19,6 +40,7 @@ const Trigger = () => {
 
     const selectedActivities = Object.keys(activities).filter(activity => activities[activity]);
     const availableActivities = Object.keys(activities).filter(activity => !activities[activity]);
+
 
     return (
         <div className="mb-8">

@@ -1,6 +1,7 @@
 "use client";
 
 import BuilderPageBody from '@/components/builder/Body'
+import { BuilderProvider } from '@/context/BuilderContext';
 import Head from 'next/head'
 
 const builder = () => {
@@ -8,8 +9,15 @@ const builder = () => {
         <>
             <Head>
                 <title>Github Actions Builder</title>
+                <meta
+                    name="description"
+                    content="Build your GitHub Actions in a Visual Builder"
+                />
+                <link rel="icon" href="/favicon.ico" />
             </Head>
-            <BuilderPageBody />
+            <BuilderProvider>
+                <BuilderPageBody />
+            </BuilderProvider>
         </>
     )
 }
